@@ -1,0 +1,4 @@
+TRANSACTION_TYPES = {
+    'DEPOSIT': 1,
+    'COLLECTION': 2
+}
