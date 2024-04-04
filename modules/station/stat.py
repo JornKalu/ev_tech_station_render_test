@@ -353,9 +353,8 @@ def sync_station_info(db: Session, initial_instruction: str=None, original_value
         return fin_data
 
 def sync_station_info_by_code(db: Session, initial_instruction: str=None, original_values: str=None, station_code: str=None, latitude: str=None, longitude: str=None, slots: List=[], status: int=None):
-    # req = create_request_log(db=db, initial_instruction=initial_instruction, server_type="station", name="post", value=original_values)
+    req = create_request_log(db=db, initial_instruction=initial_instruction, server_type="station", name="post", value=original_values)
     station = get_single_station_by_code(db=db, code=station_code)
-    return station
     if station is None:
         fin_data = {
             'status': False,

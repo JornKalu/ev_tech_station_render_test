@@ -40,7 +40,7 @@ async def process(request: Request, db: Session = Depends(get_db)):
     body = await request.body()
     return process_station_request(db=db, data=body)
 
-@router.post("/sync")
+@router.post("/sync", response_model=SyncStationResponseMode, responses={404: {"model": ErrorResponse}, 401: {"model": ErrorResponse}, 403: {"model": ErrorResponse}})
 async def sync(fields: SyncStationModel, db: Session = Depends(get_db)):
     slots = json.loads(fields.slots)
     original_values = json.dumps(jsonable_encoder(fields))
